@@ -1,0 +1,19 @@
+.productCard {
+  width: 13rem;
+  margin-top: 40px;
+}
+
+.productName {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 15px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productPrice {
+  color: #0090e3;
+  font-weight: 600;
+  font-size: 20px;
+}

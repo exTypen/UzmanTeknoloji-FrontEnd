@@ -54,5 +54,3 @@ export class MainPageComponent implements OnInit {
     }
   }
 }
-
-//github deneme

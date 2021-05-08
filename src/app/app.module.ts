@@ -10,10 +10,11 @@ import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
-import {CarouselModule} from 'primeng/carousel';
 import { ProductCardComponent } from './components/templates/product-card/product-card.component';
 import { CategorySliderComponent } from './components/templates/category-slider/category-slider.component';
 
+import {MultiSelectModule} from 'primeng/multiselect';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CategorySliderComponent } from './components/templates/category-slider/
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    CarouselModule
+    CarouselModule,
+    MultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

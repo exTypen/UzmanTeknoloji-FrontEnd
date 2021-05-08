@@ -3,7 +3,7 @@
     <div  class="col-md-3">
         <img style="width: 18rem;" src="assets/images/kulaklik.jpg">
     </div>
-    <div class="col-md-9">
+    <div style="margin-top:40px;" class="col-md-9">
       <p-carousel [value]="products" [autoplayInterval]="3000" [numVisible]="4" [numScroll]="1">
         <ng-template let-product pTemplate="item">
           <app-product-card [product] = "product"></app-product-card>

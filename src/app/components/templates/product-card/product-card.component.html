@@ -1,5 +1,6 @@
 <div class="productCard" routerLink="product/{{product.id}}">
     <img  [src]="product.images.length !== 0 ? imageBasePath + product.images[0] : imageBasePath + defaultImage" class="card-img-top" />
-    <p class="productName">{{product.name}}</p>
+    <p *ngIf="product.name.length>25" class="productName">{{product.name.slice(0,25)}}..</p>
+    <p *ngIf="product.name.length<25" class="productName">{{product.name}}</p>
     <p class="productPrice">₺{{product.price}}</p>
 </div>

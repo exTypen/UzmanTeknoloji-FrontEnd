@@ -1,9 +1,7 @@
+
+
 <div class="row">
     <div *ngFor="let product of productDtos" class="col-md-3">
-        <div routerLink="product/{{product.id}}" style="width: 13rem; margin-top: 40px;">
-            <img  [src]="product.images.length !== 0 ? imageBasePath + product.images[0] : imageBasePath + defaultImage" class="card-img-top" />
-            <p style="margin-top: 40px; font-weight: 500; font-size: 15px; display: block; text-overflow: ellipsis; white-space: nowrap ;">{{product.name}}</p>
-            <p style="color: #0090e3; font-weight: 600; font-size: 20px;">₺{{product.price}}</p>
-        </div>
+        <app-product-card [product]="product"></app-product-card>
     </div>
 </div>

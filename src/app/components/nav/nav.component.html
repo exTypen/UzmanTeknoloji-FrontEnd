@@ -18,7 +18,7 @@
       <div class="container-fluid"> <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav">
-                  <li *ngFor="let category of categories" class="nav-item" routerLink="products/0/{{category.id}}/1/16"> <b style="font-weight: 450;" class="nav-link active" aria-current="page" href="#">{{category.name}}</b> </li>
+                  <li *ngFor="let category of categories" class="nav-item" (click)="routeCategory(category)"> <b style="font-weight: 450;" class="nav-link active" aria-current="page" href="#">{{category.name}}</b> </li>
               </ul>
           </div>
       </div>

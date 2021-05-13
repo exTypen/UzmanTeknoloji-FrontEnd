@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Brand } from 'src/app/models/brand';
+import { Category } from 'src/app/models/category';
 import { ProductDto } from 'src/app/models/productDto';
+import { BrandService } from 'src/app/services/brand.service';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
 
@@ -11,25 +15,49 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsComponent implements OnInit {
 
+  categories: Category[]
+  selectedCategories?: Category[]
+
+  brands: Brand[]
+  selectedBrands?: Brand[]
+
   productDtos:ProductDto[]
 
   defaultImage = "uploads/default.jpg"
   imageBasePath = environment.baseUrl
   constructor(private productService: ProductService,
-    private activatedRoute: ActivatedRoute) { }
+    private categoryService: CategoryService,
+    private brandService: BrandService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      if(params["brandId"] && params["categoryId"] && params["page"] && params["pageSize"]){
-        this.getAllProductDetailsFilteredByPage(params["brandId"], params["categoryId"], params["page"], params["pageSize"])
-      }
+    this.activatedRoute.queryParams.subscribe((params) => {
+      console.log(params)
+      this.getProductDetailsByFilter(params["brands"], params["categories"])
+    })
+    this.getCategories()
+    this.getBrands()
+  }
+
+  getCategories(){
+    this.categoryService.getAll().subscribe((response)=>{
+      this.categories = response.data
+    })
+  }
+  
+  getBrands(){
+    this.brandService.getAll().subscribe((response)=>{
+      this.brands = response.data
     })
   }
 
-  getAllProductDetailsFilteredByPage(brandId: number, categoryId: number, page: number, pageSize: number){
-    this.productService.getAllProductDetailsFilteredByPage(brandId, categoryId, page, pageSize).subscribe((response)=>{
+  getProductDetailsByFilter(brands: number[], categories: number[]){
+    this.productService.getAllDetailsByFilter(brands, categories).subscribe((response)=>{
       this.productDtos = response.data
       console.log(this.productDtos)
     })
   }
+
+  
 }

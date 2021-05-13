@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { HtmlParser } from '@angular/compiler';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { element } from 'protractor';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListResponseModel } from '../models/listResponseModel';
@@ -17,6 +17,21 @@ export class ProductService {
   getAllDetails() : Observable<ListResponseModel<ProductDto>>{
     let url = this.apiUrl + "getallproductdetails"
     return this.httpClient.get<ListResponseModel<ProductDto>>(url);
+  }
+
+  getAllDetailsByFilter(brands?:number[], categories?:number[]) : Observable<ListResponseModel<ProductDto>>{
+    let url = this.apiUrl + "GetAllProductDetailsByFilter"
+    let queryParams = new HttpParams()
+    brands?.forEach(element=>{
+      let brand = String(element)
+      queryParams = queryParams.append("brandid", brand)
+    })
+    categories?.forEach(element =>{
+      let category = String(element)
+      queryParams = queryParams.append("categoryid", category)
+    })
+    
+    return this.httpClient.get<ListResponseModel<ProductDto>>(url, {params: queryParams});
   }
 
   getAllDetailsById(id:number) : Observable<ListResponseModel<ProductDto>>{

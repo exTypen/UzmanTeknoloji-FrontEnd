@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -12,6 +13,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ProductCardComponent } from './components/templates/product-card/product-card.component';
 import { CategorySliderComponent } from './components/templates/category-slider/category-slider.component';
+import { FormsModule } from '@angular/forms';
+
 
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CarouselModule} from 'primeng/carousel';
@@ -29,10 +32,12 @@ import {CarouselModule} from 'primeng/carousel';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     CarouselModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

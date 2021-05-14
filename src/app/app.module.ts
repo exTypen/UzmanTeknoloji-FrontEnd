@@ -13,11 +13,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ProductCardComponent } from './components/templates/product-card/product-card.component';
 import { CategorySliderComponent } from './components/templates/category-slider/category-slider.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+import { ToastrModule } from 'ngx-toastr';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CarouselModule} from 'primeng/carousel';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import {CarouselModule} from 'primeng/carousel';
     ProductPageComponent,
     ProductCardComponent,
     CategorySliderComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,11 @@ import {CarouselModule} from 'primeng/carousel';
     AppRoutingModule,
     CarouselModule,
     MultiSelectModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,9 +7,10 @@
                   <div class="d-flex form-inputs"> <input class="form-control" type="text" placeholder="Ürün arayın..."> <button style="margin-left: -50px;" type="button" class="btn btn-primary">Ara</button> </div>
               </div>
               <div class="col-md-2">
-                  <div class="d-flex d-none d-md-flex flex-row align-items-center"> <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
-                      <div class="d-flex flex-column ms-2"> <span class="qty">1 Product</span> <span class="fw-bold">$27.90</span> </div>
-                  </div>
+                <ul class="nav navbar-nav navbar-dark">
+                    <li *ngIf="userLogged"><p-splitButton [showTransitionOptions]="'50ms'" [hideTransitionOptions]="'50ms'" label="{{userName}}" icon="pi pi-user" [model]="userItems" styleClass="p-button-info"></p-splitButton></li>
+                    <li *ngIf="!userLogged"><p-splitButton [showTransitionOptions]="'50ms'" [hideTransitionOptions]="'50ms'" label="" icon="pi pi-user" [model]="userItems" styleClass="p-button-info"></p-splitButton></li>
+                  </ul>
               </div>
           </div>
       </div>

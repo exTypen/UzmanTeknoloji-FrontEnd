@@ -25,7 +25,7 @@ export class CategorySliderComponent {
 
   getCategoryById(id: number){
     this.categoryService.getById(id).subscribe((response) => {
-      this.category = response.data[0]
+      this.category = response.data
     })
   }
 

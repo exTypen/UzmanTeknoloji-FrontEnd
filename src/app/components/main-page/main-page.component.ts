@@ -19,7 +19,9 @@ export class MainPageComponent implements OnInit {
   imageBasePath = environment.baseUrl
   productDetails: ProductDto[]
   constructor(private productService: ProductService,
-    private bannerService : BannerService) { }
+    private bannerService : BannerService) { 
+      
+    }
 
   ngOnInit(): void {
     this.getProductsDetails()

@@ -1,3 +1,4 @@
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,8 +19,8 @@ export class CategoryService {
     return this.httpClient.get<ListResponseModel<Category>>(url)
   }
 
-  getById(id: number) : Observable<ListResponseModel<Category>>{
+  getById(id: number) : Observable<SingleResponseModel<Category>>{
     let url = this.apiUrl + "getbyid?id=" + id
-    return this.httpClient.get<ListResponseModel<Category>>(url)
+    return this.httpClient.get<SingleResponseModel<Category>>(url)
   }
 }

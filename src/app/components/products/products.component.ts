@@ -21,6 +21,8 @@ export class ProductsComponent implements OnInit {
   brands: Brand[]
   selectedBrands?: Brand[]
 
+  deneme: number[]
+
   productDtos:ProductDto[]
 
   defaultImage = "uploads/default.jpg"
@@ -33,8 +35,11 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
-      console.log(params)
-      this.getProductDetailsByFilter(params["brands"], params["categories"])
+      if(params["categories"] instanceof Array){
+        console.log(params)
+        this.getProductDetailsByFilter(params["brands"], params["categories"])
+      }
+      console.log(params["categories"])
     })
     this.getCategories()
     this.getBrands()

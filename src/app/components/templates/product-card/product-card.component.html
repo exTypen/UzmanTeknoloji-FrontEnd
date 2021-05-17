@@ -1,4 +1,4 @@
-<div class="productCard" routerLink="product/{{product.id}}">
+<div class="productCard" (click)="routeProductPage(product.id)">
     <img  [src]="product.images.length !== 0 ? imageBasePath + product.images[0] : imageBasePath + defaultImage" class="card-img-top" />
     <p *ngIf="product.name.length>25" class="productName">{{product.name.slice(0,25)}}..</p>
     <p *ngIf="product.name.length<25" class="productName">{{product.name}}</p>

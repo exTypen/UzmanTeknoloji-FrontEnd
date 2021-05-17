@@ -72,6 +72,7 @@ export class NavComponent implements OnInit {
       }
       this.userItems.push(
         { label: 'Profil', icon: 'pi pi-user', routerLink: ['profile'] },
+        { label: 'Sepet', icon: 'pi pi-shopping-cart', routerLink: ['basket'] },
         {
           label: 'Çıkış',
           icon: 'pi pi-sign-out',
@@ -79,6 +80,7 @@ export class NavComponent implements OnInit {
             this.authService.logOut();
           },
         }
+
       );
     } else {
       this.userItems = [

@@ -21,8 +21,11 @@ import { ToastrModule } from 'ngx-toastr';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CarouselModule} from 'primeng/carousel';
+import {CardModule} from 'primeng/card';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { BasketComponent } from './components/basket/basket.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -40,6 +43,7 @@ export function tokenGetter() {
     CategorySliderComponent,
     LoginComponent,
     RegisterComponent,
+    BasketComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     SplitButtonModule,
+    CardModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

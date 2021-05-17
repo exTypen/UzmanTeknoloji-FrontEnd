@@ -1,3 +1,5 @@
+import { LoginGuard } from './guards/login.guard';
+import { BasketComponent } from './components/basket/basket.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -12,6 +14,9 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'basket', component: BasketComponent, canActivate:[LoginGuard]},
+
+
 
 
 ];

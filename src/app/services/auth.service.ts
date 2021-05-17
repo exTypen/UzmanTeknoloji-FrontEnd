@@ -115,7 +115,6 @@ export class AuthService {
       x.endsWith('/nameidentifier')
     )[0];
     this.currentUserId = Number(decoded[propUserId]);
-    console.log(this.currentUserId)
   }
 
   async haveRole(role: string): Promise<boolean> {

@@ -1,0 +1,37 @@
+<div style="margin-top: 20px" class="row">
+  <div class="col-md-8">
+    <p-card>
+      <p-card *ngFor="let basket of baskets">
+        <div class="row">
+          <div class="col-md-2">
+            <img
+              style="width: 100px"
+              [src]="
+                basket.productDetails.images.length !== 0
+                  ? imageBasePath + basket.productDetails.images[0]
+                  : imageBasePath + defaultImage
+              "
+            />
+          </div>
+          <div class="col-md-4">
+            {{ basket.productDetails.name }}
+          </div>
+          <div class="col-md-2">{{basket.count}}</div>
+          <div class="col-md-2">{{ basket.productDetails.price }}₺</div>
+          <div class="col-md-2">
+            <button type="button" class="btn btn-danger">Sil</button>
+          </div>
+        </div>
+      </p-card>
+    </p-card>
+  </div>
+
+  <div class="col-md-4">
+    <p-card>
+      <div>
+        <p><b>Sipariş Toplamı:</b> {{totalPrice}}₺</p>
+      </div>
+      <button type="button" class="btn btn-primary">Alışverişi Tamamla</button>
+    </p-card>
+  </div>
+</div>

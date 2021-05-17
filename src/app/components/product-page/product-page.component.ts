@@ -1,3 +1,4 @@
+import { BasketService } from './../../services/basket.service';
 import { AuthService } from './../../services/auth.service';
 import { Basket } from './../../models/basket';
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +25,8 @@ export class ProductPageComponent implements OnInit {
   productId:number
   constructor(private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.getUserId()
@@ -57,8 +59,10 @@ export class ProductPageComponent implements OnInit {
   addBasket(id:number){
     this.isLogged = this.authService.loggedIn()
     if(this.isLogged){
-      let basketModel:Basket = Object.assign({productId:id, userId: this.userId, count: 2, active: true})
-      console.log(basketModel)
+      let basketModel:Basket = Object.assign({productId:id, userId: this.userId, count: 2,createDate: new Date(), active: true})
+      this.basketService.add(basketModel).subscribe((response)=>{
+        console.log(response)
+      })
     }
 
   }

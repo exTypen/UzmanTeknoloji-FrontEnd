@@ -46,6 +46,7 @@
         </p>
         <div class="row">
           <div class="col-md-6">
+            <p-dropdown [options]="numbers" [(ngModel)]="selectedNumber" optionLabel=""></p-dropdown>
             <button type="button" class="btn btn-primary">Satın Al</button>
             <button type="button" (click)="addBasket(productDto.id)" class="btn btn-secondary">Sepete Ekle</button>
 

@@ -15,6 +15,8 @@ import { environment } from 'src/environments/environment';
 export class ProductPageComponent implements OnInit {
 
   isLogged:boolean
+  numbers: number[] = [1,2,3,4,5]
+  selectedNumber: number = 1
 
   defaultImage = "uploads/default.jpg"
   imageBasePath = environment.baseUrl;
@@ -55,11 +57,10 @@ export class ProductPageComponent implements OnInit {
     }
   }
 
-  //TODO:2 tane giriş yapmış mı kontrol eden formül var kontrol et.
   addBasket(id:number){
     this.isLogged = this.authService.loggedIn()
     if(this.isLogged){
-      let basketModel:Basket = Object.assign({productId:id, userId: this.userId, count: 2,createDate: new Date(), active: true})
+      let basketModel:Basket = Object.assign({productId:id, userId: this.userId, count: this.selectedNumber,createDate: new Date(), active: true})
       this.basketService.add(basketModel).subscribe((response)=>{
         console.log(response)
       })

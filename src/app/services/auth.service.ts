@@ -37,11 +37,11 @@ export class AuthService {
       .subscribe(
         (response) => {
           this.localStorageService.setToken(response.data.token);
-          this.toastrService.success(response.message, 'Başarılı');
           this.router.navigate(['/']);
           setTimeout(function () {
             location.reload();
           }, 400);
+          this.toastrService.success(response.message, 'Başarılı');
         },
         (errorResponse) => {
           this.toastrService.error(errorResponse.error, 'Hata');
@@ -73,14 +73,6 @@ export class AuthService {
       this.setCurrentUserId();
       this.setUserName();
       await this.setRoles();
-    }
-  }
-
-  isAuthenticated(): boolean {
-    if (localStorage.getItem('token')) {
-      return true;
-    } else {
-      return false;
     }
   }
 

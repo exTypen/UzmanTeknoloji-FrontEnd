@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 import {SplitButtonModule} from 'primeng/splitbutton';
+import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CarouselModule} from 'primeng/carousel';
 import {CardModule} from 'primeng/card';
@@ -56,6 +57,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     SplitButtonModule,
     CardModule,
+    DropdownModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

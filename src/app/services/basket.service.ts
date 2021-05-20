@@ -25,4 +25,9 @@ export class BasketService {
     let url = this.apiUrl + 'GetAllDetailsByUser?userid=' + userId;
     return this.httpClient.get<ListResponseModel<BasketDto>>(url);
   }
+
+  delete(basket: Basket): Observable<ResponseModel> {
+    let url = this.apiUrl + 'Delete';
+    return this.httpClient.post<ResponseModel>(url, basket);
+  }
 }

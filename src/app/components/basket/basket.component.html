@@ -1,6 +1,6 @@
 <div style="margin-top: 20px" class="row">
   <div class="col-md-8">
-    <p-card>
+    <p-card *ngIf="baskets.length !== 0">
       <p-card *ngFor="let basket of baskets">
         <div class="row">
           <div class="col-md-2">
@@ -16,13 +16,16 @@
           <div class="col-md-4">
             {{ basket.productDetails.name }}
           </div>
-          <div class="col-md-2">{{basket.count}}</div>
-          <div class="col-md-2">{{ basket.productDetails.price }}₺</div>
+          <div class="col-md-2">{{ basket.count }}</div>
+          <div class="col-md-2">{{ basket.productDetails.price*basket.count }}₺</div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-danger">Sil</button>
+            <button type="button" class="btn btn-danger" (click)="delete(basket.id)">Sil</button>
           </div>
         </div>
       </p-card>
+    </p-card>
+    <p-card *ngIf="baskets.length === 0">
+      Sepette ürün yok.
     </p-card>
   </div>
 

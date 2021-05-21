@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
+import {MenuModule} from 'primeng/menu';
+import {PanelMenuModule} from 'primeng/panelmenu';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
@@ -26,6 +28,10 @@ import {CardModule} from 'primeng/card';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MyOrdersComponent } from './components/profile-components/my-orders/my-orders.component';
+import { ProfileInfoComponent } from './components/profile-components/profile-info/profile-info.component';
+import { ChangePasswordComponent } from './components/profile-components/change-password/change-password.component';
 
 
 export function tokenGetter() {
@@ -45,6 +51,10 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
     BasketComponent,
+    ProfileComponent,
+    MyOrdersComponent,
+    ProfileInfoComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +68,8 @@ export function tokenGetter() {
     SplitButtonModule,
     CardModule,
     DropdownModule,
+    MenuModule,
+    PanelMenuModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter

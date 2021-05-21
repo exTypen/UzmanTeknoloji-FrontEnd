@@ -7,6 +7,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: MainPageComponent },
@@ -15,9 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'basket', component: BasketComponent, canActivate:[LoginGuard]},
-
-
-
+  { path: 'profile', component: ProfileComponent, canActivate:[LoginGuard]},
 
 ];
 

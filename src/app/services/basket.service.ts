@@ -30,4 +30,9 @@ export class BasketService {
     let url = this.apiUrl + 'Delete';
     return this.httpClient.post<ResponseModel>(url, basket);
   }
+
+  deleteAllByUser(userId: number) : Observable<ResponseModel>{
+    let url = this.apiUrl + 'DeleteByUser?userId=' + userId;
+    return this.httpClient.get<ResponseModel>(url)
+  }
 }

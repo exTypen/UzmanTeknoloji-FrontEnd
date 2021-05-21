@@ -19,7 +19,7 @@
           <div class="col-md-2">{{ basket.count }}</div>
           <div class="col-md-2">{{ basket.productDetails.price*basket.count }}₺</div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-danger" (click)="delete(basket.id)">Sil</button>
+            <button type="button" class="btn btn-danger" (click)="deleteBasket(basket.id)">Sil</button>
           </div>
         </div>
       </p-card>
@@ -34,7 +34,7 @@
       <div>
         <p><b>Sipariş Toplamı:</b> {{totalPrice}}₺</p>
       </div>
-      <button type="button" class="btn btn-primary">Alışverişi Tamamla</button>
+      <button type="button" class="btn btn-primary" (click)="addOrder()">Alışverişi Tamamla</button>
     </p-card>
   </div>
 </div>

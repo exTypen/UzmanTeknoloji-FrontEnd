@@ -1,0 +1,19 @@
+<p-card *ngFor="let orderDetail of orderDetailDtos">
+  <div class="row">
+    <div class="col-md-3">
+      <img style="width: 150px"
+      [src]="
+        orderDetail.productDto.images.length !== 0
+          ? imageBasePath + orderDetail.productDto.images[0]
+          : imageBasePath + defaultImage
+      ">
+    </div>
+    <div class="col-md-5">
+      {{orderDetail.productDto.name}}
+      <br>
+      {{orderDetail.count}} adet
+      <br>
+      {{orderDetail.productDto.price}} TL
+    </div>
+  </div>
+</p-card>

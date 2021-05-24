@@ -6,6 +6,6 @@ export interface OrderDetailDto {
 	productDto: ProductDto;
 	count: number;
 	price: number;
-	createDate: string;
+	createDate: Date;
 	active: boolean;
 }

@@ -9,6 +9,8 @@ import { Order } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order.service';
 import { OrderDetail } from 'src/app/models/orderDetail';
 import { OrderDetailService } from 'src/app/services/order-detail.service';
+import { Router } from '@angular/router';
+import { DataTransferService } from 'src/app/services/data-transfer.service';
 
 @Component({
   selector: 'app-basket',
@@ -25,8 +27,8 @@ export class BasketComponent implements OnInit {
     private basketService: BasketService,
     private authService: AuthService,
     private toastrService: ToastrService,
-    private orderService: OrderService,
-    private orderDetailService: OrderDetailService
+    private router: Router,
+    private dataTransferService: DataTransferService<BasketDto[]>
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +47,6 @@ export class BasketComponent implements OnInit {
   getBaskets(userId: number) {
     this.basketService.getAllDetailsByUser(userId).subscribe((response) => {
       this.baskets = response.data;
-      console.log(response);
     });
   }
 
@@ -60,33 +61,33 @@ export class BasketComponent implements OnInit {
   }
 
   addOrder() {
-    let order: Order = Object.assign({
-      userId: this.userId,
-      addressId: 1,
-      orderStatusId: 1,
-      createDate: new Date(),
-      active: true,
-    });
-    this.orderService.getIdAdd(order).subscribe((response) => {
-      this.orderDetails = []
-      this.baskets.forEach((basket) => {
-        let orderDetail: OrderDetail = Object.assign({
-          orderId: response.data,
-          productId: basket.productDetails.id,
-          count: basket.count,
-          price: basket.productDetails.price,
-          createDate: new Date(),
-          active: true,
-        });
-        this.orderDetails.push(orderDetail);
-      });
-      console.log(this.orderDetails);
-      this.orderDetailService
-        .multiAdd(this.orderDetails)
-        .subscribe((response) => {
-          console.log(response);
-        });
-      this.basketService.deleteAllByUser(this.userId).subscribe();
-    });
+    this.dataTransferService.setData(this.baskets)
+    this.router.navigate(["neworder"])
+    // let order: Order = Object.assign({
+    //   userId: this.userId,
+    //   addressId: 9,
+    //   orderStatusId: 1,
+    //   createDate: new Date(),
+    //   active: true,
+    // });
+    // this.orderService.getIdAdd(order).subscribe((response) => {
+    //   this.orderDetails = []
+    //   this.baskets.forEach((basket) => {
+    //     let orderDetail: OrderDetail = Object.assign({
+    //       orderId: response.data,
+    //       productId: basket.productDetails.id,
+    //       count: basket.count,
+    //       price: basket.productDetails.price,
+    //       createDate: new Date(),
+    //       active: true,
+    //     });
+    //     this.orderDetails.push(orderDetail);
+    //   });
+    //   this.orderDetailService
+    //     .multiAdd(this.orderDetails)
+    //     .subscribe((response) => {
+    //     });
+    //   this.basketService.deleteAllByUser(this.userId).subscribe();
+    // });
   }
 }

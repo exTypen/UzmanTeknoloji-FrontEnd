@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Order } from '../models/order';
-import { ResponseModel } from '../models/responseModel';
+import { OrderDto } from '../models/orderDto';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
@@ -20,8 +20,9 @@ export class OrderService {
     return this.httpClient.post<SingleResponseModel<number>>(url, order)
   }
 
-  getOrdersByUser(userId: number) : Observable<ListResponseModel<Order>>{
-    let url = this.apiUrl + "GetAllByUser?userId=" + userId
-    return this.httpClient.get<ListResponseModel<Order>>(url)
+  getOrderDetails(userId: number) : Observable<ListResponseModel<OrderDto>>{
+    let url = this.apiUrl + "GetAllDetailsByUser?userId=" + userId
+    return this.httpClient.get<ListResponseModel<OrderDto>>(url)
   }
+
 }

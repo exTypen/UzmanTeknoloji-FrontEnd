@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <b class="title">Adres Ekle</b>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="newAddressForm">
+            <div class="mb-3" style="margin-bottom: 10px">
+              <label for="name">Adı: </label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  formControlName="name"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="city">Şehir:</label>
+              <div style="margin-top: -10px">
+                <select
+                  class="form-select"
+                  formControlName="cityId"
+                  style="margin-top: 10px"
+                  [(ngModel)]="cityId"
+                >
+                  <option *ngFor="let city of cities" [ngValue]="city.id">
+                    {{ city.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="postalCode">Posta Kodu: </label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="postalCode"
+                  formControlName="postalCode"
+                  class="form-control"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="addressDetail">Açıklama</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="addressDetail"
+                  formControlName="addressDetail"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

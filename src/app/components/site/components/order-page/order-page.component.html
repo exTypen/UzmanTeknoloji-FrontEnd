@@ -1,0 +1,76 @@
+<div class="container">
+  <div style="margin-top: 20px" class="row">
+    <div class="col-md-8">
+      <p-card>
+        <p>Adres seçin</p>
+        <div *ngFor="let address of addresses" style="margin-bottom: 10px">
+          <p-card>
+            <div class="row">
+              <div class="col-md-1">
+                <p-radioButton
+                  [inputId]="address.name"
+                  name="address"
+                  [value]="address"
+                  [(ngModel)]="selectedAddress"
+                ></p-radioButton>
+              </div>
+              <div class="col-md-11">
+                <b>{{ address.name }}</b
+                ><br />
+                <span
+                  ><b style="font-weight: 600">Şehir: </b
+                  >{{ address.cityName }}</span
+                ><br />
+                <span
+                  ><b style="font-weight: 600">Posta Kodu: </b
+                  >{{ address.postalCode }}</span
+                ><br />
+                <span
+                  ><b style="font-weight: 600">Açıklama: </b
+                  >{{ address.addressDetail }}</span
+                ><br />
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </p-card>
+    </div>
+    <div class="col-md-4">
+      <p-card>
+        <p style="font-weight: 500">Alışveriş Özeti:</p>
+        <p-button
+          label="Sepet Özeti"
+          icon="pi pi-search"
+          (click)="op.toggle($event)"
+        ></p-button>
+        <p-overlayPanel #op>
+          <ng-template pTemplate>
+            <p-card *ngFor="let basket of baskets">
+              <div class="row">
+                <div class="col-md-5">
+                  <span>{{ basket.productDetails.name }}</span>
+                </div>
+                <div class="col-md-3">
+                  <span>{{ basket.count }}</span>
+                </div>
+                <div class="col-md-4">
+                  <span>{{ basket.productDetails.price }}</span>
+                </div>
+              </div>
+            </p-card>
+          </ng-template> </p-overlayPanel
+        ><br />
+
+        {{ totalPrice }}
+        <button
+          style="margin-top: 20px; width: 385px"
+          type="button"
+          class="btn btn-primary"
+          (click)="addOrder()"
+        >
+          Alışverişi Tamamla
+        </button>
+      </p-card>
+    </div>
+  </div>
+</div>

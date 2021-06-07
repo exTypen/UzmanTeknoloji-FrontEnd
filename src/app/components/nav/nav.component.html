@@ -1,29 +1,88 @@
 <header class="section-header">
   <section class="header-main border-bottom bg-white">
-      <div class="container-fluid">
-          <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-              <div class="col-md-2" routerLink="/"> <img class="d-none d-md-flex" src="assets/images/logo.png" width="100"> </div>
-              <div class="col-md-8">
-                  <div class="d-flex form-inputs"> <input class="form-control" type="text" placeholder="Ürün arayın..."> <button style="margin-left: -50px;" type="button" class="btn btn-primary">Ara</button> </div>
-              </div>
-              <div class="col-md-2">
-                <ul class="nav navbar-nav navbar-dark">
-                    <li *ngIf="userLogged"><p-splitButton [showTransitionOptions]="'50ms'" [hideTransitionOptions]="'50ms'" label="{{userName}}" icon="pi pi-user" [model]="userItems" styleClass="p-button-info"></p-splitButton></li>
-                    <li *ngIf="!userLogged"><p-splitButton [showTransitionOptions]="'50ms'" [hideTransitionOptions]="'50ms'" label="" icon="pi pi-user" [model]="userItems" styleClass="p-button-info"></p-splitButton></li>
-                  </ul>
-              </div>
+    <div class="container-fluid">
+      <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
+        <div class="col-md-2" routerLink="/">
+          <img
+            class="d-none d-md-flex"
+            src="assets/images/logo.png"
+            width="100"
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="d-flex form-inputs">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Ürün arayın..."
+            />
+            <button
+              style="margin-left: -50px"
+              type="button"
+              class="btn btn-primary"
+            >
+              Ara
+            </button>
           </div>
+        </div>
+        <div class="col-md-2">
+          <ul style="float: right" class="nav navbar-nav navbar-dark">
+            <li *ngIf="userLogged">
+              <p-splitButton
+                [showTransitionOptions]="'50ms'"
+                [hideTransitionOptions]="'50ms'"
+                label="{{ userName }}"
+                icon="pi pi-user"
+                [model]="userItems"
+                styleClass="p-button-info"
+              ></p-splitButton>
+            </li>
+            <li *ngIf="!userLogged">
+              <p-splitButton
+                [showTransitionOptions]="'50ms'"
+                [hideTransitionOptions]="'50ms'"
+                label=""
+                icon="pi pi-user"
+                [model]="userItems"
+                styleClass="p-button-info"
+              ></p-splitButton>
+            </li>
+          </ul>
+        </div>
       </div>
+    </div>
   </section>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid"> <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                  <li *ngFor="let category of categories" class="nav-item" (click)="routeCategory(category)"> <b style="font-weight: 450;" class="nav-link active" aria-current="page" href="#">{{category.name}}</b> </li>
-              </ul>
-          </div>
+    <div class="container-fluid">
+      <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li
+            *ngFor="let category of categories"
+            class="nav-item"
+            (click)="routeCategory(category)"
+          >
+            <b
+              style="font-weight: 450"
+              class="nav-link active"
+              aria-current="page"
+              href="#"
+              >{{ category.name }}</b
+            >
+          </li>
+        </ul>
       </div>
+    </div>
   </nav>
 </header>
-
-

@@ -14,10 +14,9 @@ export class ProductCardComponent {
     @Input() product: ProductDto
 
     constructor(private router: Router){
-
     }
 
     routeProductPage(productId: number){
-      this.router.navigate(["product/"+productId])
+      this.router.navigate(["site/product/"+productId])
     }
 }

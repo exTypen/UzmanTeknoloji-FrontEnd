@@ -1,31 +1,54 @@
-import { LoginGuard } from './guards/login.guard';
-import { BasketComponent } from './components/basket/basket.component';
+import { ProfileLayoutComponent } from './components/layouts/profile-layout/profile-layout.component';
+import { AuthLayoutComponent } from './components/layouts/auth-layout/auth-layout.component';
+import { SiteLayoutComponent } from './components/layouts/site-layout/site-layout.component';
+import { AdminLayoutsComponent } from './components/layouts/admin-layouts/admin-layouts.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/auth-components/login/login.component';
-import { MainPageComponent } from './components/main-page/main-page.component';
-import { ProductPageComponent } from './components/product-page/product-page.component';
-import { ProductsComponent } from './components/products/products.component';
-import { RegisterComponent } from './components/auth-components/register/register.component';
-import { ProfileComponent } from './components/profile-components/profile/profile.component';
-import { OrderPageComponent } from './components/order-page/order-page.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: MainPageComponent },
-  { path: 'product/:productId', component: ProductPageComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'basket', component: BasketComponent, canActivate:[LoginGuard]},
-  { path: 'profile', component: ProfileComponent, canActivate:[LoginGuard]},
-  { path: 'neworder', component: OrderPageComponent},
+  {
+    path: '',
+    pathMatch: 'full',
+    component: SiteLayoutComponent,
+    loadChildren: () =>
+      import('./components/site/site.module').then((m) => m.SiteModule),
+  },
 
+  {
+    path: 'site',
+    component: SiteLayoutComponent,
+    loadChildren: () =>
+      import('./components/site/site.module').then((m) => m.SiteModule),
+  },
 
+  //Admin Routes
+  {
+    path: 'admin',
+    component: AdminLayoutsComponent,
+    loadChildren: () =>
+      import('./components/admin/admin.module').then((m) => m.AdminModule),
+  },
+
+  //Auth Routes
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    loadChildren: () =>
+      import('./components/auth/auth.module').then((m) => m.AuthModule),
+  },
+
+  //Porfile Routes
+  {
+    path: 'profile',
+    component: ProfileLayoutComponent,
+    loadChildren: () =>
+      import('./components/profile/profile.module').then((m) => m.ProfileModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}

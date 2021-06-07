@@ -1,0 +1,12 @@
+<app-nav></app-nav>
+<div class="container">
+  <div style="margin-top: 30px" class="row">
+    <div class="col-md-3">
+      <p-panelMenu [model]="items"></p-panelMenu>
+    </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

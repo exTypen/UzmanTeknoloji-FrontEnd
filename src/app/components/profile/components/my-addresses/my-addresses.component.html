@@ -1,0 +1,28 @@
+<div class="container">
+  <button
+    style="margin-bottom: 10px"
+    type="button"
+    class="btn btn-primary"
+  >
+    Adres Ekle
+  </button>
+  <div style="margin-bottom: 10px" *ngFor="let address of addresses">
+    <p-card>
+      <div class="row">
+        <div class="col-md-3">
+          <b>{{ address.name }}</b>
+        </div>
+        <div class="col-md-8"></div>
+        <div class="col-md-1">
+          <i class="fas fa-edit"></i>
+          <i style="margin-left: 10px" class="fas fa-trash"></i>
+        </div>
+      </div>
+      <br />
+      <p>{{ address.addressDetail }}</p>
+      <p style="margin-top: -15px">
+        {{ address.cityName }}/{{ address.postalCode }}
+      </p>
+    </p-card>
+  </div>
+</div>

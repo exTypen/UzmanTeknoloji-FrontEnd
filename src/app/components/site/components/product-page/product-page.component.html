@@ -1,0 +1,97 @@
+<div class="container">
+  <div *ngIf="productDto" class="row">
+    <div *ngIf="productDto.images" class="col-md-4">
+      <div
+        id="carouselExampleControls"
+        *ngIf="productDto.images.length !== 0"
+        style="width: 22rem; margin-top: 40px; margin-left: 50px"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div
+            [class]="setImageClass(image)"
+            *ngFor="let image of productDto.images"
+          >
+            <img [src]="imageBasePath + image" class="d-block w-100" />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <div
+        id="carouselExampleSlidesOnly"
+        *ngIf="productDto.images.length === 0"
+        style="width: 22rem; margin-top: 40px; margin-left: 50px"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              [src]="imageBasePath + defaultImage"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <p style="margin-top: 40px; color: dimgrey">
+        <b style="color: #0090e3">Marka: </b>{{ productDto.brandName }}
+      </p>
+      <h1 style="font-weight: 500; font-size: 22px; color: #444">
+        {{ productDto.name }}
+      </h1>
+      <p style="color: #444">Stok Kodu: {{ productDto.code }}</p>
+      <p style="color: #0090e3; font-weight: 700; font-size: 30px">
+        ₺{{ productDto.price }}
+        <span style="font-size: 16px; font-weight: 450">(KDV Dahil)</span>
+      </p>
+      <div class="row">
+        <div class="col-md-6">
+          <p-dropdown
+            [options]="numbers"
+            [(ngModel)]="selectedNumber"
+            optionLabel=""
+          ></p-dropdown>
+          <br />
+          <br />
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="addOrder(productDto)"
+          >
+            Satın Al
+          </button>
+          <button
+            style="margin-left: 10px"
+            type="button"
+            (click)="addBasket(productDto.id)"
+            class="btn btn-secondary"
+          >
+            Sepete Ekle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -45,7 +45,7 @@ export class NavComponent implements OnInit {
     this.selectedCategory = [];
     this.selectedCategory.push(category);
     let categories = this.selectedCategory.map((c) => c.id);
-    this.router.navigate(['products/'], {
+    this.router.navigate(['/site/products/'], {
       queryParams: { categories },
       queryParamsHandling: 'merge',
       relativeTo: this.route,
@@ -53,11 +53,11 @@ export class NavComponent implements OnInit {
   }
 
   routeLogin() {
-    this.router.navigate(['login/']);
+    this.router.navigate(['auth/login/']);
   }
 
   routeRegister() {
-    this.router.navigate(['register/']);
+    this.router.navigate(['auth/register/']);
   }
 
   async createUserItems() {
@@ -72,7 +72,7 @@ export class NavComponent implements OnInit {
       }
       this.userItems.push(
         { label: 'Profil', icon: 'pi pi-user', routerLink: ['profile'] },
-        { label: 'Sepet', icon: 'pi pi-shopping-cart', routerLink: ['basket'] },
+        { label: 'Sepet', icon: 'pi pi-shopping-cart', routerLink: ['site/basket'] },
         {
           label: 'Çıkış',
           icon: 'pi pi-sign-out',
